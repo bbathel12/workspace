@@ -9,12 +9,12 @@ include('./head.php');
 */
 function create_thumbnail($filename){
 	$percent = .1;
-	list($width, $height) = getimagesize("/var/www/html/workspace/images/".$filename);
+	list($width, $height) = getimagesize("/var/www/amberandbrice.com/workspace/images/".$filename);
 	$newwidth = $width * $percent;
 	$newheight = $height * $percent;
-	
+
 	$thumb  = imagecreatetruecolor($newwidth,$newheight);
-	
+
 	$ext = pathinfo($filename)['extension'];
 	echo "<h1>$ext</h1>";
 	switch($ext){
@@ -33,7 +33,7 @@ function create_thumbnail($filename){
 					imagejpeg($thumb,"./thumbs/".$filename);
 					break;
 		default: die("image extension cannot be determined");
-		
+
 	}
-	
+
 }
