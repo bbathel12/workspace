@@ -1,1 +1,4 @@
 .htpasswd
+.htaccess
+*images*
+*thumbs*

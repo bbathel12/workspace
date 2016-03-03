@@ -151,3 +151,6 @@ div#projects{
 	display:block;
 	
 }
+#edit-form textarea{
+	height:500px;
+}

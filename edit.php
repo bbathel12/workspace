@@ -12,11 +12,13 @@ $cat_sql = "select distinct name, id from categories order by name";
 $cats = $db->query($cat_sql);
 
 ?>
-<a href="/workspace?id=<?php echo $id ?>"><h1>Home</h1></a>
+<a href="//<?php echo $_SERVER['HTTP_HOST'];?>/workspace?id=<?php echo $id ?>"><h1>Home</h1></a>
 <div>
-	<form id="edit-form" action="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $id ?>" method="post">
+	<form id="edit-form" action="//<?php echo $_SERVER['HTTP_HOST'];?><?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $id ?>" method="post">
 		<input type="hidden" name=id value="<?php echo $id; ?>">
-		<img class="edit-img" src="/workspace/images/<?php echo $image['file'];?>">
+		<?php if($image['file']!='false'){?>
+			<img class="edit-img" src="/workspace/thumbs/<?php echo $image['file'];?>">
+		<?php } ?>
 		<select name="project">
 			<?php
 				while($row = $cats->fetch_assoc()){
@@ -35,7 +37,7 @@ if(!empty($_POST)){
 	$db->query($update_sql);
 	echo $db->error;
 	echo "<h1>".$db->error.(int)$_POST['project']."</h1>";
-$location = "localhost".$_SERVER['PHP_SELF']."?id=". $id ;
+$location =$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."?id=". $id ;
 
 header("location://$location");
 }
