@@ -3,4 +3,4 @@
 	$del_sql = "delete from images where id={$_GET['id']}";
 	$db->query($del_sql);
 	echo $db->error;
-	header("location://amberandbrice.com/workspace");
+	header("location://{$_SERVER['SERVER_NAME']}/workspace");
